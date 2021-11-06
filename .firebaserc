@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionic-ng-data": {
+      "hosting": {
+        "app": [
+          "ionic-ng-data"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionic-ng-data"
+  }
+}
