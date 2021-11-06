@@ -5,5 +5,24 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="record">
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input [(ngModel)]="record.title"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="stacked">Note</ion-label>
+      <ion-textarea [(ngModel)]="record.text" rows="8"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" color="success" (click)="updateRecord()">
+      <ion-icon name="save" slot="start"></ion-icon>
+      Update
+    </ion-button>
+    <ion-button expand="block" color="danger" (click)="deleteRecord()">
+      <ion-icon name="trash" slot="start"></ion-icon>
+      Delete
+    </ion-button>
+  </div>
 </ion-content>
