@@ -15,7 +15,7 @@ export class HomePage {
   constructor(
     private dataservice: DataService,
     private alertCtrl: AlertController,
-    private modelCtrl: ModalController
+    private modalCtrl: ModalController
   ) {
     this.dataservice.getRecords().subscribe((res) => {
       console.log(res);
@@ -24,12 +24,10 @@ export class HomePage {
   }
 
   async openRecord(record: Record) {
-    const modal = await this.modelCtrl.create({
+    const modal = await this.modalCtrl.create({
       component: ModalPage,
       componentProps: { id: record.id },
       cssClass: 'setting-modal',
-      // breakpoints: [0, 0.5, 0.8],
-      // initialBreakpoints: 0.5,
     });
     modal.present();
   }
@@ -40,12 +38,12 @@ export class HomePage {
       inputs: [
         {
           name: 'title',
-          placeholder: 'Example record',
+          placeholder: 'Enter title...',
           type: 'text',
         },
         {
           name: 'text',
-          placeholder: 'Example text',
+          placeholder: 'Enter text...',
           type: 'textarea',
         },
       ],

@@ -12,6 +12,7 @@ import Record from '../models/record';
 export class DataService {
   constructor(private firestore: Firestore) {}
 
+  // fetch all records as an observable Records array from the Firebase 'records' collection of documents.
   getRecords(): Observable<Record[]> {
     const recordsRef = collection(this.firestore, 'records');
     return collectionData(recordsRef, { idField: 'id' }) as Observable<
@@ -20,8 +21,8 @@ export class DataService {
   }
 
   getRecordById(id: string): Observable<Record> {
-    const recordDecRef = doc(this.firestore, `records/${id}`);
-    return docData(recordDecRef, { idField: 'id' }) as Observable<Record>;
+    const recordDocRef = doc(this.firestore, `records/${id}`);
+    return docData(recordDocRef, { idField: 'id' }) as Observable<Record>;
   }
 
   addRecord(record: Record) {

@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title><ion-icon class="title-icon" name="document-text-outline"></ion-icon>Record Details</ion-title>
+    <ion-title
+      ><ion-icon class="title-icon" name="document-text-outline"></ion-icon
+      >Record Details</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -20,14 +23,19 @@
 
 <ion-footer class="ion-no-border">
   <ion-row>
-    <ion-col style="text-align: center !important;">
+    <ion-col style="text-align: center !important">
       <ion-button size="small" color="primary" (click)="updateRecord()">
         <ion-icon name="save" slot="start"></ion-icon>
         Update
       </ion-button>
     </ion-col>
-    <ion-col style="text-align: center !important;">
-      <ion-button position="center" size="small" color="danger" (click)="deleteRecord()">
+    <ion-col style="text-align: center !important">
+      <ion-button
+        position="center"
+        size="small"
+        color="danger"
+        (click)="deleteRecord()"
+      >
         <ion-icon name="trash" slot="start"></ion-icon>
         Delete
       </ion-button>

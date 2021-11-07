@@ -18,6 +18,7 @@ export class ModalPage implements OnInit {
     private toastCtrl: ToastController
   ) {}
 
+  // during init fetch record details using Input id.
   ngOnInit() {
     this.dataService.getRecordById(this.id).subscribe((res) => {
       this.record = res;
