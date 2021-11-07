@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,15 +25,29 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.home-styles {
+  --ion-background-color: #0082c3;
+  --ion-item-background: #d9dde1;
+}
+
 .setting-modal .modal-wrapper {
-  --ion-background-color:#f0dbd8;
+  --ion-background-color: #d9dde1;
   --border-radius: 20px;
-  --max-height: 55%;
+  --max-height: 50%;
   --max-width: 80%;
   --width: 80%;
-  --height: 70%;
-  --border-style: dotted;
-  --border-color: #428cff;
-  border-width: 5px;
+  --height: 50%;
+  --border-style: solid;
+  --border-color: #d9dde1;
+  border-width: 4px;
   top: 20%;
+}
+
+ion-footer {
+  background-color: #d9dde1;
+}
+
+.title-icon {
+  font-size: 24px;
+  padding-right: 8px;
 }
