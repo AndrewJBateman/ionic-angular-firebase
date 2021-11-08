@@ -3,10 +3,10 @@
 * Ionic 5 app to perform Create Read Update & Delete (CRUD) operations on a Google Cloud Firestore NoQSL document-oriented database.
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
-![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/ionic-angular-firestore?style=plastic)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/ionic-angular-firestore?style=plastic)
-![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/ionic-angular-firestore?style=plastic)
-![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/ionic-angular-firestore?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/ionic-angular-firebase?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/ionic-angular-firebase?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/ionic-angular-firebase?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/ionic-angular-firebase?style=plastic)
 
 ## :page_facing_up: Table of contents
 
@@ -25,11 +25,13 @@
 ## :books: General info
 
 * I had to downgrade Typescript to v4.2.4 for code to work
-* The FireStore 'Test Rules' were not available - see `Setup` below
+* The FireStore 'Test Rules' were not available. Firebase cccess was declined without some kind of access-limit script - see `Setup` below
 * Each database record contains simple title & text strings with auto-generated record id
 * Typescript Record model used to specify record format
 * Home page shows records from database as a list of Ionic cards
+* Clicking on a card activates a modal with record details and update & delete buttons
 * Data service separates logic that interacts with Firebase database
+* Progressive Web App functionality added but needs to be tested
 
 ## :camera: Screenshots
 
@@ -42,9 +44,12 @@
 * [Ionic/angular v5](https://ionicframework.com/)
 * [Ionic icons](https://ionic.io/ionicons)
 * [Angular v12](https://angular.io/)
+* [Angular PWA](https://ionicframework.com/docs/angular/pwa) added
+* [Angular Service-worker v12](https://www.npmjs.com/package/@angular/service-worker)
 * [Firebase v9](https://firebase.google.com/)
 * [@angular/fire v7](https://www.npmjs.com/package/@angular/fire) official Angular library for Firebase.
 * [RxJS v6](https://reactivex.io/)
+* [http-server](https://www.npmjs.com/package/http-server#available-options) static server to test PWA
 
 ## :floppy_disk: Setup
 
@@ -63,6 +68,8 @@ service cloud.firestore {
 ```
 * Note: There are other ways to limit user access, including adding Firebase Authentication
 * To start the server on _localhost://8100_ type: 'ionic serve'
+* `ionic build --prod` to create build files in `www` folder
+* `http-server www/` to serve static build files
 
 ## :computer: Code Examples
 
@@ -90,6 +97,7 @@ service cloud.firestore {
 ## :clap: Inspiration
 
 * [How to implement an ionic modal controller in details](https://edupala.com/ionic-modal-controller-exmple/) for modal styling and size
+* [Progressive Web Apps in Angular](https://ionicframework.com/docs/angular/pwa) includes deploying a PWA to Firebase
 
 ## :file_folder: License
 
