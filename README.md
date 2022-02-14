@@ -20,16 +20,16 @@
   * [:cool: Features](#cool-features)
   * [:clipboard: Status & To-do list](#clipboard-status--to-do-list)
   * [:clap: Inspiration](#clap-inspiration)
+  * [:file_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
 ## :books: General info
 
-* I had to downgrade Typescript to v4.2.4 for code to work
-* The FireStore 'Test Rules' were not available. Firebase cccess was declined without some kind of access-limit script - see `Setup` below
-* Each database record contains simple title & text strings with auto-generated record id
+* Firebase access was declined without some kind of access-limit script - see `Setup` below
+* Each database record contains simple title & text strings with auto-generated record id string
 * Typescript Record model used to specify record format
 * Home page shows records from database as a list of Ionic cards
-* Clicking on a card activates a modal with record details and update & delete buttons
+* Clicking on a card activates a modal with record details and cancel, update & delete buttons
 * Data service separates logic that interacts with Firebase database
 * Progressive Web App functionality added but needs to be tested
 
@@ -67,17 +67,25 @@ service cloud.firestore {
 }
 ```
 * Note: There are other ways to limit user access, including adding Firebase Authentication
-* To start the server on _localhost://8100_ type: 'ionic serve'
+* `ionic serve` To start the server on _localhost://8100_
 * `ionic build --prod` to create build files in `www` folder
 * `http-server www/` to serve static build files
 
 ## :computer: Code Examples
 
-* fetch all records as an observable Records array from the Firebase 'records' collection of documents.
+* `data.service.ts` constructor fetches all records with their ids from the Firebase 'records' collection of documents.
 
 ```typescript
-  getRecords(): Observable<Record[]> {
-
+  constructor(private db: AngularFirestore) {
+    this.recordsCollection = db.collection<Record>('records');
+    this.records = this.recordsCollection.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((record) =>
+          // loop through each database item and return with id
+          ({ id: record.payload.doc.id, ...record.payload.doc.data() })
+        )
+      )
+    );
   }
 ```
 
@@ -89,7 +97,7 @@ service cloud.firestore {
 ## :clipboard: Status & To-do list
 
 * Status: Working
-* To-do: pwa, add authentication?
+* To-do: Deploy
 
 ## :clap: Inspiration
 
