@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="light">
     <ion-title>
-      <ion-icon class="title-icon" name="documents-outline"></ion-icon>List of Records
+      <ion-icon class="title-icon" name="clipboard-outline"></ion-icon>Records Database
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="home-styles">
+<ion-content class="page-styles">
   <ion-card
     *ngFor="let record of records; let recordIndex=index;"
     (click)="openRecord(record)"

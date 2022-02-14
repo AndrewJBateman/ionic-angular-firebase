@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 
 import { DataService } from '../services/data.service';
@@ -10,15 +10,17 @@ import { ModalPage } from '../modal/modal.page';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  records = [];
+export class HomePage implements OnInit {
+  records: Record[];
+
   constructor(
     private dataservice: DataService,
     private alertCtrl: AlertController,
     private modalCtrl: ModalController
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.dataservice.getRecords().subscribe((res) => {
-      console.log(res);
       this.records = res;
     });
   }
@@ -34,6 +36,7 @@ export class HomePage {
 
   async addRecord() {
     const alert = await this.alertCtrl.create({
+      cssClass: 'add-record-alert',
       header: 'Add Record',
       inputs: [
         {

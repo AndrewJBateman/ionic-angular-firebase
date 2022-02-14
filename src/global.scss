@@ -25,9 +25,16 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.home-styles {
-  --ion-background-color: #0082c3;
+.page-styles {
+  --ion-background-color: #1c0d75;
   --ion-item-background: #d9dde1;
+
+  .add-record-alert {
+    --background:#fff;
+    --max-width: 300px;
+    --max-height: 300px;
+    --width: 300px;
+  }
 }
 
 .setting-modal .modal-wrapper {
@@ -51,3 +58,15 @@ ion-footer {
   font-size: 24px;
   padding-right: 8px;
 }
+
+.toast-custom-class {
+  --color:#ffffff;
+  --border-color:#000000;
+  --border-radius:3px;
+  --border-style:solid;
+  --border-width:3px;
+  --background:#12eb2f;
+  --button-color:#ffffff;
+}
+
+

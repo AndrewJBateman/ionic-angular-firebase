@@ -26,16 +26,29 @@ export class ModalPage implements OnInit {
   }
 
   async updateRecord() {
-    this.dataService.updateRecord(this.record);
-    const toast = await this.toastCtrl.create({
-      message: 'Record updated',
-      duration: 1000,
-    });
-    toast.present();
+    await this.dataService.updateRecord(this.record, this.id);
+    this.raiseToast('Record updated');
   }
 
   async deleteRecord() {
-    this.dataService.deleteRecord(this.record);
+    await this.dataService.deleteRecord(this.id);
+    this.raiseToast('Record deleted');
+  }
+
+  async cancelAndReturn() {
+    this.raiseToast('Return to List');
+  }
+
+  raiseToast(message: string) {
     this.modalCtrl.dismiss();
+    this.toastCtrl.create({
+      message,
+      position: 'middle',
+      cssClass: 'toast-custom-class',
+      duration: 500,
+    }).then((toast) => {
+      toast.present();
+    });
+
   }
 }

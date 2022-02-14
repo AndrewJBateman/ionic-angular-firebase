@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="page-styles">
   <div *ngIf="record">
     <ion-item>
       <ion-label position="stacked" color="tertiary">Title:</ion-label>
@@ -23,6 +23,17 @@
 
 <ion-footer class="ion-no-border">
   <ion-row>
+    <ion-col style="text-align: center !important">
+      <ion-button
+        position="center"
+        size="small"
+        color="secondary"
+        (click)="cancelAndReturn()"
+      >
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+        Back
+      </ion-button>
+    </ion-col>
     <ion-col style="text-align: center !important">
       <ion-button size="small" color="primary" (click)="updateRecord()">
         <ion-icon name="save" slot="start"></ion-icon>
