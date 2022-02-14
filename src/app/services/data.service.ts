@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { collectionData, deleteDoc, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, updateDoc } from '@firebase/firestore';
-import { docData } from 'rxfire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import Record from '../models/record';
 
@@ -10,33 +12,40 @@ import Record from '../models/record';
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private firestore: Firestore) {}
+  private recordsCollection: AngularFirestoreCollection<Record>;
+  private records: Observable<Record[]>;
+
+  constructor(private db: AngularFirestore) {
+    this.recordsCollection = db.collection<Record>('records');
+
+    this.records = this.recordsCollection.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((record) =>
+          // loop through each database item and return with id
+          ({ id: record.payload.doc.id, ...record.payload.doc.data() })
+        )
+      )
+    );
+  }
 
   // fetch all records as an observable Records array from the Firebase 'records' collection of documents.
   getRecords(): Observable<Record[]> {
-    const recordsRef = collection(this.firestore, 'records');
-    return collectionData(recordsRef, { idField: 'id' }) as Observable<
-      Record[]
-    >;
+    return this.records;
   }
 
-  getRecordById(id: string): Observable<Record> {
-    const recordDocRef = doc(this.firestore, `records/${id}`);
-    return docData(recordDocRef, { idField: 'id' }) as Observable<Record>;
+  getRecordById(id: string): any {
+    return this.recordsCollection.doc<Record>(id).valueChanges();
   }
 
-  addRecord(record: Record) {
-    const recordsRef = collection(this.firestore, 'records');
-    return addDoc(recordsRef, record);
+  addRecord(record: Record): Promise<any> {
+    return this.recordsCollection.add(record);
   }
 
-  deleteRecord(record: Record) {
-    const recordDocRef = doc(this.firestore, `records/${record.id}`);
-    return deleteDoc(recordDocRef);
+  deleteRecord(id: string): Promise<any> {
+    return this.recordsCollection.doc(id).delete();
   }
 
-  updateRecord(record: Record) {
-    const recordDocRef = doc(this.firestore, `records/${record.id}`);
-    return updateDoc(recordDocRef, { title: record.title, text: record.text });
+  updateRecord(record: Record, id: string) {
+    return this.recordsCollection.doc(id).update(record);
   }
 }
