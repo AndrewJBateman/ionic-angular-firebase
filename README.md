@@ -1,6 +1,6 @@
 # :zap: Ionic Angular Firebase
 
-* Ionic 5 app to perform Create Read Update & Delete (CRUD) operations on a Google Cloud Firestore NoQSL document-oriented database.
+* Ionic app to perform Create Read Update & Delete (CRUD) operations on a Google Cloud Firestore NoQSL document-oriented database.
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/ionic-angular-firebase?style=plastic)
@@ -40,28 +40,28 @@
 
 ## :signal_strength: Technologies
 
-* [Ionic v5](https://ionicframework.com/)
-* [Ionic/angular v5](https://ionicframework.com/)
+* [Ionic v6](https://ionicframework.com/)
+* [Ionic/angular v6](https://ionicframework.com/)
 * [Ionic icons](https://ionic.io/ionicons)
-* [Angular v12](https://angular.io/)
+* [Angular v13](https://angular.io/)
 * [Angular PWA](https://ionicframework.com/docs/angular/pwa) added
-* [Angular Service-worker v12](https://www.npmjs.com/package/@angular/service-worker)
+* [Angular Service-worker v13](https://www.npmjs.com/package/@angular/service-worker)
 * [Firebase v9](https://firebase.google.com/)
 * [@angular/fire v7](https://www.npmjs.com/package/@angular/fire) official Angular library for Firebase.
-* [RxJS v6](https://reactivex.io/)
+* [RxJS v7](https://reactivex.io/)
 * [http-server](https://www.npmjs.com/package/http-server#available-options) static server to test PWA
 
 ## :floppy_disk: Setup
 
 * Run `npm i` to install dependencies
-* Create google firebase project, create firestore database and add data
+* Create Google firebase project, create firestore database and add firebaseConfig data to `environment.ts` files
 * In Firebase click on 'Edit Rules' and change to allow access until up to a month from today, e.g.:
 
 ```
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2021, 11, 30);
+      allow read, write: if request.time < timestamp.date(2022, 3, 12);
     }
   }
 }
@@ -77,10 +77,7 @@ service cloud.firestore {
 
 ```typescript
   getRecords(): Observable<Record[]> {
-    const recordsRef = collection(this.firestore, 'records');
-    return collectionData(recordsRef, { idField: 'id' }) as Observable<
-      Record[]
-    >;
+
   }
 ```
 
