@@ -10,7 +10,7 @@
 
 ## :page_facing_up: Table of contents
 
-* [:zap: Ionic Angular Firestore](#zap-ionic-angular-firestore)
+* [:zap: Ionic Angular Firebase](#zap-ionic-angular-firebase)
   * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
   * [:books: General info](#books-general-info)
   * [:camera: Screenshots](#camera-screenshots)
@@ -43,7 +43,7 @@
 * [Ionic v6](https://ionicframework.com/)
 * [Ionic/angular v6](https://ionicframework.com/)
 * [Ionic icons](https://ionic.io/ionicons)
-* [Angular v13](https://angular.io/)
+* [Angular v14](https://angular.io/)
 * [Angular PWA](https://ionicframework.com/docs/angular/pwa) added
 * [Angular Service-worker v13](https://www.npmjs.com/package/@angular/service-worker)
 * [Firebase v9](https://firebase.google.com/)
@@ -57,15 +57,16 @@
 * Create Google firebase project, create firestore database and add firebaseConfig data to `environment.ts` files
 * In Firebase click on 'Edit Rules' and change to allow access until up to a month from today, e.g.:
 
-```
+```firestore
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2022, 3, 12);
+      allow read, write: if request.time < timestamp.date(2022, 12, 12);
     }
   }
 }
 ```
+
 * Note: There are other ways to limit user access, including adding Firebase Authentication
 * `ionic serve` To start the server on _localhost://8100_
 * `ionic build --prod` to create build files in `www` folder
