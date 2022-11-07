@@ -45,7 +45,7 @@
 * [Ionic icons](https://ionic.io/ionicons)
 * [Angular v14](https://angular.io/)
 * [Angular PWA](https://ionicframework.com/docs/angular/pwa) added
-* [Angular Service-worker v13](https://www.npmjs.com/package/@angular/service-worker)
+* [Angular Service-worker v14](https://www.npmjs.com/package/@angular/service-worker)
 * [Firebase v9](https://firebase.google.com/)
 * [@angular/fire v7](https://www.npmjs.com/package/@angular/fire) official Angular library for Firebase.
 * [RxJS v7](https://reactivex.io/)
@@ -54,7 +54,22 @@
 ## :floppy_disk: Setup
 
 * Run `npm i` to install dependencies
-* Create Google firebase project, create firestore database and add firebaseConfig data to `environment.ts` files
+* Create Google firebase project, create firestore database and add firebaseConfig data to `environment.ts` files, e.g.:
+  
+```typescript
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: 'xxx..x',
+    authDomain: 'xxx..x',
+    projectId: 'xxx..x',
+    storageBucket: 'xxx..x',
+    messagingSenderId: 'xxx..x',
+    appId: 'xxx..x',
+  },
+};
+```
+
 * In Firebase click on 'Edit Rules' and change to allow access until up to a month from today, e.g.:
 
 ```firestore
