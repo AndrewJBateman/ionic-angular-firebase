@@ -43,7 +43,7 @@
 * [Ionic v6](https://ionicframework.com/)
 * [Ionic/angular v6](https://ionicframework.com/)
 * [Ionic icons](https://ionic.io/ionicons)
-* [Angular v14](https://angular.io/)
+* [Angular v15](https://angular.io/)
 * [Angular PWA](https://ionicframework.com/docs/angular/pwa) added
 * [Angular Service-worker v14](https://www.npmjs.com/package/@angular/service-worker)
 * [Firebase v9](https://firebase.google.com/)
